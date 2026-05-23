@@ -2,7 +2,7 @@ import random
 
 #產生1~100的隨機整數
 answer = random.randint(1, 100)
-print(answer)
+#print(answer)
 count = 0
 
 print("=== 猜數字遊戲 ===")
