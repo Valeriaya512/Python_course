@@ -1,5 +1,6 @@
-#將檔案匯出轉成pdf檔
+# 將檔案匯出轉成pdf檔
 import requests
+from requests import Response
 import pandas as pd
 from pathlib import Path
 
@@ -86,12 +87,14 @@ def export_to_pdf(df: pd.DataFrame, output_path: Path) -> None:
     print(f"PDF 已產生：{output_path}")
 
 def main():
-    url = "https://tcgbusfs.blob.core.windows.net/dotapp/youbike/v2/youbike_immediate.json"
+    # 這是台北市Youbike 2.0 的Web API網站
+    url:str = "https://tcgbusfs.blob.core.windows.net/dotapp/youbike/v2/youbike_immediate.json"
 
-    response = requests.get(url)
+    # 使用 requests 套件裡面的 get 函式，執行後會傳出 Response 的實體
+    response:Response = requests.get(url)
 
-    if response.status_code == 200:
-        data = response.json()
+    if response.status_code == 200:  # 使用 Response 裡的 Property 叫 status_code，如果取得的數字是 200 代表下載成功，如果不是則代表下載失敗
+        data = response.json()  # 使用 Response 實體的 json() 方法，會傳出 list 的資料結構
 
         # list[dict] -> DataFrame
         df = pd.DataFrame(data)
