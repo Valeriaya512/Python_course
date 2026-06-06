@@ -3,6 +3,7 @@ import requests
 from requests import Response
 import pandas as pd
 from pathlib import Path
+from pandas import DataFrame
 
 
 def export_to_pdf(df: pd.DataFrame, output_path: Path) -> None:
@@ -94,12 +95,16 @@ def main():
     response:Response = requests.get(url)
 
     if response.status_code == 200:  # 使用 Response 裡的 Property 叫 status_code，如果取得的數字是 200 代表下載成功，如果不是則代表下載失敗
-        data = response.json()  # 使用 Response 實體的 json() 方法，會傳出 list 的資料結構
+        data:list[dict] = response.json()  # 使用 Response 實體的 json() 方法，會傳出 list 的資料結構
 
         # list[dict] -> DataFrame
-        df = pd.DataFrame(data)
+        #df = pd.DataFrame(data) #輸出與下一列一樣
+        #df = pd.DataFrame(data = data)  #引述名稱呼叫
+        df:DataFrame = pd.DataFrame(data = data)  # 要記得import DataFarme 才可以寫 :DataFarme
 
-        print(df.head())
+        #print(df.head(10))  #顯示前10筆資料
+        #print(df.head(-10))  #不顯示最後10筆資料
+        print(df.tail())  #顯示後5筆資料
 
         output_file = Path(__file__).with_name("youbike_report.pdf")
         export_to_pdf(df, output_file)
