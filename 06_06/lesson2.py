@@ -1,3 +1,5 @@
+## 課程內容：自訂function
+
 n = 10
 print(n)
 
@@ -10,7 +12,7 @@ print(__package__)
 
 #================================================
 #自訂命名function
-def main():
+def main():  #自訂命名function main()
     print("這裡是main function的命名空間")
     print(n)
 
@@ -21,12 +23,22 @@ if __name__ == '__main__':
 
 #================================================
 def main():
-    n = 10  #n為區域變數，使用範圍在main裡
+    n = 5  #n為區域變數，使用範圍僅在main裡
     print("這裡是main function的命名空間")
     print(n)
 
 if __name__ == '__main__':
     main()  #呼叫main()，執行裡的程式區塊
-    print(n)  #無法找到n，n只能用在main function
+    print(n)  #無法找到n，n只能用在main function運作
+
+#================================================
+n = 0
+def main():
+    print("這裡是main function的命名空間")
+    print(n)
+
+if __name__ == '__main__':
+    main()
+    print(n)
 
 #================================================
