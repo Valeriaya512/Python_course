@@ -99,6 +99,7 @@ def main():
         print(df.tail())
 
         # Output path 是我們輸出的檔案的絕對路徑
+        # __file__：現在目錄路徑
         #output_file = Path(__file__).with_name("youbike_report.pdf")
         output_file = Path.cwd().with_name("youbike_report.pdf") 
 
