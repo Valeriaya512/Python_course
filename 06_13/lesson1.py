@@ -3,20 +3,17 @@ from requests import Response
 import pandas as pd
 from pandas import DataFrame
 from pathlib import Path
+from reportlab.lib import colors
+from reportlab.lib.pagesizes import A4, landscape
+from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.cidfonts import UnicodeCIDFont
+from reportlab.platypus import PageBreak, Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
+
+
 
 
 def export_to_pdf(df: pd.DataFrame, output_path: Path) -> None:
-    # 延遲匯入：只有真的要輸出 PDF 時才需要 reportlab
-    try:
-        from reportlab.lib import colors
-        from reportlab.lib.pagesizes import A4, landscape
-        from reportlab.lib.styles import getSampleStyleSheet
-        from reportlab.pdfbase import pdfmetrics
-        from reportlab.pdfbase.cidfonts import UnicodeCIDFont
-        from reportlab.platypus import PageBreak, Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
-    except ModuleNotFoundError:
-        print("缺少套件 reportlab，請先安裝：pip install reportlab")
-        return
 
     # 註冊可顯示中文的字型（macOS / Linux 常可直接使用）
     font_name = "STSong-Light"
@@ -101,9 +98,11 @@ def main():
 
         print(df.tail())
 
-        output_file = Path(__file__).with_name("youbike_report.pdf")
-        
-        export_to_pdf(df, output_file)
+        # Output path 是我們輸出的檔案的絕對路徑
+        #output_file = Path(__file__).with_name("youbike_report.pdf")
+        output_file = Path.cwd().with_name("youbike_report.pdf") 
+
+        export_to_pdf(df, output_file)  #呼叫自訂的export_to_pdf function，這個function的目的是儲存檔案
 
     else:
         print("下載失敗")
