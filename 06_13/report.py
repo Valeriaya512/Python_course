@@ -1,4 +1,4 @@
-# 自訂的moudle
+# 自訂的moudle report，外部程式
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import A4, landscape
 from reportlab.lib.styles import getSampleStyleSheet
