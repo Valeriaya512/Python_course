@@ -1,5 +1,5 @@
 ### 作業1
-
+```
 import pandas as pd
 import numpy as np
 
@@ -33,7 +33,7 @@ rowCount, columnCount = dataFrame.shape
 
 print(dataFrame1)
 
-
+```
 
 ### 作業2
 
