@@ -18,5 +18,5 @@ ax.axis('equal')
 
 st.pyplot(fig)
 
-# 執行 uv run streamlit run lesson2.py
+# 執行 uv run streamlit run lesson1_1.py
 # ctrl+c 退出執行
