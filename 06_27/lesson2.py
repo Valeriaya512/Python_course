@@ -17,3 +17,6 @@ ax.pie(values, labels=brands, colors=colors, explode=explode,
 ax.axis('equal')
 
 st.pyplot(fig)
+
+
+# ctrl+c 退出執行
