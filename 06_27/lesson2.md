@@ -17,18 +17,18 @@ dataFrame = dataFrame.drop(0)
 print(dataFrame)
 
 # 請完成:刪除合計列與 4 列說明文字(用 drop,可加 inplace=True)
- dataFrame.drop([______], inplace=True)
+# dataFrame.drop([______], inplace=True)
 
 
 # 取得目前的列數與欄數
 rowCount, columnCount = dataFrame.shape
 
 # 請完成:把索引重設為從 0 開始的連續編號
- dataFrame.index = ______
+# dataFrame.index = ______
 
 
 # 請完成:只保留「班級」「學生人數」「借閱冊數」三個欄位
- dataFrame1 = dataFrame.reindex(columns=[______])
+# dataFrame1 = dataFrame.reindex(columns=[______])
 
 
 print(dataFrame1)
